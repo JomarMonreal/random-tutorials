@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "../../public/images/trt_logo_outlined.webp";
 import { Orange } from "./Colors";
-import { links } from "@/constants/links";
+import { links } from "@/utils/links";
 
 export function NavBar() {
 
