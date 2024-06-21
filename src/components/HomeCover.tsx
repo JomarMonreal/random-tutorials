@@ -19,21 +19,20 @@ export function HomeCover() {
   }, []);
 
   return (
-    <article className="relative">
-      <div className="absolute w-full -z-10 h-full">
-        
-          <Image 
-            src={homeCoverImages[currentImageIndex]} 
-            alt="Cover Background Image" 
-            fill
-            style={{objectFit: "cover"}}
-            quality={100}
-            priority
-            />
+    <article className="relative h-screen">
 
+      <div className="absolute w-full -z-10 h-full">
+        <Image 
+          src={homeCoverImages[currentImageIndex]} 
+          alt="Cover Background Image" 
+          fill
+          style={{objectFit: "cover"}}
+          quality={100}
+          priority
+          />
       </div>
 
-      <section className="home-cover-content">
+      <section className="home-cover-content h-full flex flex-col justify-center">
 
         <hgroup className="flex flex-col items-center select-none">
           <h1 className="text-7xl sm:text-9xl"><PartlyOrangeText orangeLettersCount={1} text={"RANDOM"} delay={4000}/></h1>
@@ -43,6 +42,7 @@ export function HomeCover() {
         <section className="home-cover-content_description">
           <p className="mb-7">{WEBSITE_DESCRIPTION}</p>
           <Button 
+            href="/tutorials"
             variant="contained" 
             className="button-contained-default"
             >
