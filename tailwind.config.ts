@@ -8,7 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-
       fontFamily: {
         rubik: [ "Rubik", "sans-serif"],
         sans: ["Rubik", "sans-serif"]
@@ -28,7 +27,8 @@ const config: Config = {
         secondary: {
           500: "#ffb703",
           700: "#fb8500"
-        }
+        },
+        backdrop: "#542A"
       }
     },
   },
