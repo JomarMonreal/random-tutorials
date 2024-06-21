@@ -6,8 +6,19 @@ import { links } from "@/utils/links";
 import PartlyOrangeText from "./PartlyOrangeText";
 import { Button } from "@mui/material";
 import Link from "next/link";
+import { ReactNode, useContext } from "react";
+import { PopupContext, PopupContextType } from "@/providers/PopupProvider";
+import Login from "./popups/Login";
+import Signup from "./popups/Signup";
 
 export function NavBar() {
+
+  const popup = useContext(PopupContext) as PopupContextType
+
+  const openPopup = (child: ReactNode) => {
+    popup.setChild(child)
+    popup.setIsOpen(true)
+  }
 
   return <nav className="nav-bar">
     <div className="flex select-none">
@@ -32,8 +43,19 @@ export function NavBar() {
     </menu>
 
     <menu className="flex justify-evenly w-1/5">
-      <Button className="text-white font-rubik">Sign Up</Button>
-      <Button variant="contained" className="font-rubik bg-secondary-700 hover:bg-secondary-500">Log In</Button>
+      <Button 
+        className="text-white font-rubik"
+        onClick={() => openPopup(<Signup/>)} 
+      >
+        Sign Up
+      </Button>
+      <Button 
+        variant="contained" 
+        className="button-secondary"
+        onClick={() => openPopup(<Login/>)} 
+      >
+        Log In
+      </Button>
     </menu>
   </nav>;
 }
