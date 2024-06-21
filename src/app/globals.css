@@ -52,5 +52,9 @@
   .button-white{
     @apply border-white text-white border-2 hover:border-gray-200 hover:text-gray-200 hover:border-2 font-semibold
   }
+
+  .main-background{
+    @apply h-screen w-screen fixed top-20 left-0 -z-50 opacity-65
+  }
 }
 

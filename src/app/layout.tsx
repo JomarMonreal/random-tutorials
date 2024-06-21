@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { WEBSITE_DESCRIPTION, WEBSITE_NAME } from "../constants/about";
 import { NavBar } from "../components/NavBar";
+import Image from "next/image";
+import background from "../../public/images/background.webp"
+import { Footer } from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +23,21 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NavBar/>
+        <div className="main-background">
+          <Image 
+            src={background} 
+            alt={"Background"} 
+            fill
+            style={{objectFit: "cover"}}
+            quality={100}
+            priority
+            />
+        </div>
         {children}
+        <Footer/>
       </body>
     </html>
   );
 }
+
 
