@@ -14,18 +14,23 @@ interface PageOverviewProps{
 export function PageOverview (
   {isContentStart,title,description,buttonLabel,bgStyleClassses="", buttonStyleClasses="button-default", children}: PageOverviewProps) {
 
-  return <article className={`page-overview ${isContentStart? "flex-row": "flex-row-reverse"} ${bgStyleClassses}`}>
-    <div className="w-1/2 h-full">
-      {children}
-    </div>
-    <section className="w-96">
-      <h2>{title}</h2>
-      <p className="my-10">
-        {description}
-      </p>
-      <Button variant="outlined" className={buttonStyleClasses}>
-        {buttonLabel}
-        </Button>
-    </section>
-  </article>;
+  return (
+    <article className={`page-overview ${isContentStart? "flex-row": "flex-row-reverse"} ${bgStyleClassses}`}>
+
+      <div className="w-1/2 h-full">
+        {children}
+      </div>
+
+      <section className="w-96 flex flex-col items-center text-center">
+        <h2>{title}</h2>
+        <p className="my-10">
+          {description}
+        </p>
+        <Button variant="outlined" className={`${buttonStyleClasses} ${isContentStart? "button-default": "button-white"}`}>
+          {buttonLabel}
+          </Button>
+      </section>
+
+    </article>
+  )
 }
