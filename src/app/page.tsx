@@ -5,7 +5,9 @@ import { PageOverview } from "../components/PageOverview";
 export default function Home() {
   return (
     <main>
+      
       <HomeCover/>
+
       {pageOverviews.map((pageOverview, index) => (
         <PageOverview
           key={index}
@@ -17,6 +19,7 @@ export default function Home() {
           buttonStyleClasses={pageOverview.buttonStyleClasses}
         />
       ))}
+
     </main>
   );
 }
