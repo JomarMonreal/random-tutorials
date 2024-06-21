@@ -6,10 +6,51 @@
 
 @layer base{
   h1{
-    @apply text-8xl
+    @apply text-8xl font-semibold
+  }
+  h2{
+    @apply text-5xl font-semibold
   }
   main{
     @apply font-rubik
+  }
+}
+
+@layer components{
+  .nav-bar{
+    @apply bg-primary-100 flex justify-between items-center text-white flex-wrap
+  }
+
+  .nav-buttons{
+    @apply flex justify-evenly w-1/2
+  }
+
+  .nav-button{
+    @apply w-full text-center cursor-pointer hover:underline hover:scale-110
+  }
+
+  .home-cover-content{
+    @apply flex flex-col relative z-0 text-white items-center w-full p-10 bg-backdrop
+  }
+
+  .home-cover-content_description{
+    @apply flex flex-col justify-center text-center w-4/5 sm:w-1/2 mt-10
+  }
+
+  .page-overview{
+    @apply flex justify-evenly flex-wrap w-full p-10 text-primary-100
+  }
+
+  .button-default{
+    @apply border-primary-100 text-primary-100 border-2 hover:border-primary-900 hover:text-primary-900 hover:border-2 font-semibold
+  }
+
+  .button-contained-default{
+    @apply bg-primary-100 hover:bg-primary-200 font-rubik
+  }
+
+  .button-white{
+    @apply border-white text-white border-2 hover:border-gray-200 hover:text-gray-200 hover:border-2 font-semibold
   }
 }
 
