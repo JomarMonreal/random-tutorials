@@ -3,24 +3,49 @@ export const links = [
         "path": "/",
         "label": "Home",
         "visibility": ["all"],
-        "visibleInNavBar": true
+        "visibleInNavBar": true,
+        "visibleInFooter": false,
     },
     {
         "path": "*",
         "label": "Page Doesn't Exist",
         "visibility": ["all"],
-        "visibleInNavBar": false
+        "visibleInNavBar": false,
+        "visibleInFooter": false,
     },
     {
         "path": "/about",
         "label": "About",
         "visibility": ["all"],
-        "visibleInNavBar": true
+        "visibleInNavBar": true,
+        "visibleInFooter": true,
     },
     {
-        "path": "/Tutorials",
+        "path": "/tutorials",
         "label": "Tutorials",
         "visibility": ["all"],
-        "visibleInNavBar": true
-    }
+        "visibleInNavBar": true,
+        "visibleInFooter": false,
+    },
+    {
+        "path": "/contact-us",
+        "label": "Contact Us",
+        "visibility": ["all"],
+        "visibleInNavBar": true,
+        "visibleInFooter": true,
+    },
+    {
+        "path": "/privacy-policy",
+        "label": "Privacy Policy",
+        "visibility": ["all"],
+        "visibleInNavBar": false,
+        "visibleInFooter": true,
+    },
+    {
+        "path": "/terms",
+        "label": "Terms of Service",
+        "visibility": ["all"],
+        "visibleInNavBar": false,
+        "visibleInFooter": true,
+    },
 ]
