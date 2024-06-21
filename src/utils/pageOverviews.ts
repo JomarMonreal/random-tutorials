@@ -3,7 +3,9 @@ export const pageOverviews = [
       isContentStart: true,
       title: "Totally Random!",
       description: "A haven of delightful unpredictability where everything is utterly random! Here, you'll find a mix of content chosen without any specific pattern. Whether you're looking for tutorials, interesting facts, or just something new to explore, you'll never know what to expect. Dive in and see where the randomness takes you!",
-      buttonLabel: "Find Random Tutorial"
+      buttonLabel: "Find Random Tutorial",
+      bgStyleClassses: "",
+      buttonStyleClasses: "button-default"
     },
     {
       isContentStart: false,
@@ -17,6 +19,8 @@ export const pageOverviews = [
       isContentStart: true,
       title: "More About Us",
       description: "Random Tutorials is dedicated to bring you a diverse range of content that is completely random. Our mission is to surprise, educate, and entertain you with an array of tutorials, articles, and fascinating facts. Discover more about who we are and join us on this journey of endless curiosity and fun!",
-      buttonLabel: "Learn More"
+      buttonLabel: "Learn More",
+      bgStyleClassses: "",
+      buttonStyleClasses: "button-default"
     }
   ];
