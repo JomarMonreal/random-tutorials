@@ -1,5 +1,5 @@
 import { getRandomInt } from "@/utils/randomizer"
-import { Orange } from "./Colors"
+import { Orange } from "./ColoredText"
 import { useEffect, useState } from "react"
 
 const PartlyOrangeText = ({orangeLettersCount, text, delay}:{orangeLettersCount: number, text: string, delay: number}) => {
