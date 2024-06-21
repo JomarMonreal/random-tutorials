@@ -1,2 +1,2 @@
-export const WEBSITE_NAME = "RANDOM TUTORIALS"
+export const WEBSITE_NAME = "Random Tutorials - Release Boredom and Be Productive"
 export const WEBSITE_DESCRIPTION = "Feeling bored and looking for something fun to do? Dive into a world of endless possibilities with Random Tutorials! Discover a wide variety of exciting tutorials that will spark your curiosity and creativity"
