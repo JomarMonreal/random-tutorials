@@ -14,7 +14,7 @@ export function Footer() {
             return null
           }
           return(
-            <span key={index} className="text-gray-400 hover:text-white hover:underline cursor-pointer">{link.label}</span>
+            <Link href={link.path} key={index} className="text-gray-400 hover:text-white hover:underline cursor-pointer">{link.label}</Link>
           )
         })}
       </div>
