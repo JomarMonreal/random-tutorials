@@ -42,7 +42,7 @@ export const links = [
         "visibleInFooter": true,
     },
     {
-        "path": "/terms",
+        "path": "/terms-of-service",
         "label": "Terms of Service",
         "visibility": ["all"],
         "visibleInNavBar": false,
