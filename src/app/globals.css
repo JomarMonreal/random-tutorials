@@ -11,6 +11,9 @@
   h2{
     @apply text-5xl font-semibold
   }
+  h4{
+    @apply text-2xl font-semibold
+  }
   main{
     @apply font-rubik
   }
@@ -58,6 +61,10 @@
 
   .main-background{
     @apply h-screen w-screen fixed top-20 left-0 -z-50 opacity-65
+  }
+
+  .text-input{
+    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-200
   }
 }
 
