@@ -8,7 +8,7 @@ import { AcknowledgementFooter } from '../AcknowledgementFooter';
 
 const Signup = () => {
   return (
-    <form className='w-bg-white p-8 rounded w-full flex flex-col justify-center items-center'>
+    <form className='bg-white p-8 rounded w-full flex flex-col justify-center items-center'>
       <Image src={logo} alt="Website logo" width={100} className="p-4" />
       <TextInput label={'Username'} type={"text"} />
       <TextInput label={'Email'} type={'email'} />
