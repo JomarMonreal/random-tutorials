@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "../../public/images/trt_logo_outlined.webp";
-import { links } from "@/utils/links";
+import { links } from "@/data/links";
 import Link from "next/link";
 
 export function Footer() {

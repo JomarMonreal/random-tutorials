@@ -1,4 +1,4 @@
-import { pageOverviews } from "@/utils/pageOverviews";
+import { pageOverviews } from "@/data/pageOverviews";
 import { HomeCover } from "../components/HomeCover";
 import { PageOverview } from "../components/PageOverview";
 

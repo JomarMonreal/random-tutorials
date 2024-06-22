@@ -1,6 +1,6 @@
 "use client"
 
-import { homeCoverImages } from "@/utils/homeCoverImages";
+import { homeCoverImages } from "@/data/homeCoverImages";
 import { WEBSITE_DESCRIPTION, WEBSITE_NAME } from "../constants/about";
 import Image from "next/image";
 import { useEffect, useState } from "react";
