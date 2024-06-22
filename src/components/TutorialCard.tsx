@@ -1,15 +1,15 @@
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-interface ProjectCardProps{
+interface TutorialCardProps{
     title: string
     username: string
-    date: string
+    date: Date
     description: string
     imageUrl: string
 }
 
-export function ProjectCard({title, username, date, description, imageUrl}: ProjectCardProps) {
+export function TutorialCard({title, username, date, description, imageUrl}: TutorialCardProps) {
     return <Card className="drop-shadow-xl w-80 m-4">
         <CardMedia
             component={"img"}
@@ -21,7 +21,7 @@ export function ProjectCard({title, username, date, description, imageUrl}: Proj
                 <MoreVertIcon />
             </IconButton>}
             title={<h4>{title}</h4>}
-            subheader={<div>by {username} - {date}</div>} />
+            subheader={<div>by {username} - {date.toLocaleDateString()}</div>} />
         <CardContent>
             <Typography variant="body2" color="text.secondary">
                 {description}
