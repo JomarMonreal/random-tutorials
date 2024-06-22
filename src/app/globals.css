@@ -15,17 +15,17 @@
     @apply text-2xl font-semibold
   }
   main{
-    @apply font-rubik
+    @apply font-rubik cursor-default
   }
 }
 
 @layer components{
   .nav-bar{
-    @apply bg-primary-100 flex justify-between items-center text-white flex-wrap
+    @apply bg-primary-100 flex justify-between items-center text-white w-screen
   }
 
   .nav-buttons{
-    @apply flex justify-evenly w-1/2
+    @apply flex justify-evenly w-1/2 scroll-auto
   }
 
   .nav-button{
