@@ -7,6 +7,8 @@ import { Footer } from "../components/Footer";
 import { Popup } from "../components/Popup";
 import { MainBackground } from "../components/MainBackground";
 import PopupProvider from "@/providers/PopupProvider";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "@/themes/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,21 +24,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white">
-        <PopupProvider>
+      <ThemeProvider theme={theme}>
 
-          <Popup/>
+        <body className="bg-white">
+          <PopupProvider>
+
+            <Popup/>
+              
+
+            <NavBar/>
+
+            <MainBackground/>
+
+            {children}
             
-
-          <NavBar/>
-
-          <MainBackground/>
-
-          {children}
-          
-          <Footer/>
-        </PopupProvider>
-      </body>
+            <Footer/>
+          </PopupProvider>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }
