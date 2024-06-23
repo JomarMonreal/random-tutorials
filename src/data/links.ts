@@ -21,6 +21,13 @@ export const links = [
         "visibleInFooter": true,
     },
     {
+        "path": "/tutorials/:id",
+        "label": "View Tutorial",
+        "visibility": ["all"],
+        "visibleInNavBar": false,
+        "visibleInFooter": false,
+    },
+    {
         "path": "/tutorials",
         "label": "Tutorials",
         "visibility": ["all"],
