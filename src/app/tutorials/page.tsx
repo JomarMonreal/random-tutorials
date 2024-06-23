@@ -1,33 +1,18 @@
-"use client"
-
-import { Tabs, Tab } from "@mui/material"
 import { TutorialCard } from "../../components/TutorialCard"
 import { tutorials } from "@/data/tutorials"
-import { useState } from "react"
-import { tags } from "@/data/tags"
+import { TutorialsTabs } from "../../components/TutorialsTabs"
 
 const Tutorials = () => {
-    const [value, setValue] = useState(0);
-
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
-
     return (
         <main className="flex justify-center flex-wrap">
-            <Tabs value={value} onChange={handleChange} variant="scrollable">
-                {
-                    tags.map((tag,index)=>
-                        <Tab key={index} label={tag.label} id={`simple-tab-${index}`}/>
-                    )
-                }
-            </Tabs>
+            <TutorialsTabs/>
 
             <article className="flex justify-center flex-wrap">
                 {
                     tutorials.map((tutorial,index)=>  
                         <TutorialCard 
                             key={index}
+                            id={tutorial.id}
                             title={tutorial.title} 
                             username={tutorial.username} 
                             date={new Date(tutorial.date)} 
@@ -42,5 +27,6 @@ const Tutorials = () => {
 }
 
 export default Tutorials
+
 
 
