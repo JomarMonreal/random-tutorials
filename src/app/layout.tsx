@@ -25,19 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider theme={theme}>
-
         <body className="bg-white">
           <PopupProvider>
-
             <Popup/>
-              
-
             <NavBar/>
-
             <MainBackground/>
-
             {children}
-            
             <Footer/>
           </PopupProvider>
         </body>
