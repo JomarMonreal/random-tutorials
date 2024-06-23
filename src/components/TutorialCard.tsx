@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Link from "next/link";
+import { Tags } from "./Tags";
 
 interface TutorialCardProps{
     id: string
@@ -9,14 +10,14 @@ interface TutorialCardProps{
     date: Date
     description: string
     imageUrl: string
+    tags?: string[]
 }
 
-export function TutorialCard({id,title, username, date, description, imageUrl}: TutorialCardProps) {
-    return <Card className="drop-shadow-xl w-80 m-4">
+export function TutorialCard({id,title, username, date, description, imageUrl, tags}: TutorialCardProps) {
+    return <Card className="drop-shadow-xl w-80 m-4 gap-0 p-0">
         <CardMedia
             component={"img"}
             alt={"Project Image"}
-            height={"100px"}
             image={imageUrl} 
             sx={{
                 height: "200px"
@@ -35,6 +36,9 @@ export function TutorialCard({id,title, username, date, description, imageUrl}: 
                 </div>
             } 
         />
+
+        <Tags tags={tags ?? []} className="m-auto"/>
+
         <CardContent>
             <Typography variant="body2" color="text.secondary" 
                 sx={{
@@ -49,7 +53,10 @@ export function TutorialCard({id,title, username, date, description, imageUrl}: 
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" href={`/tutorials/${id}`}>Start Learning</Button>
+            <Button size="small" href={`/tutorials/${id}/view`}>Start Learning</Button>
         </CardActions>
     </Card>;
 }
+
+
+
