@@ -18,7 +18,7 @@ const Tutorials = () => {
             <Tabs value={value} onChange={handleChange} variant="scrollable">
                 {
                     tags.map((tag,index)=>
-                        <Tab label={tag.label} id={`simple-tab-${index}`}/>
+                        <Tab key={index} label={tag.label} id={`simple-tab-${index}`}/>
                     )
                 }
             </Tabs>
