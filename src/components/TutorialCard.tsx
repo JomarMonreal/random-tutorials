@@ -3,6 +3,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Link from "next/link";
 
 interface TutorialCardProps{
+    id: string
     title: string
     username: string
     date: Date
@@ -10,7 +11,7 @@ interface TutorialCardProps{
     imageUrl: string
 }
 
-export function TutorialCard({title, username, date, description, imageUrl}: TutorialCardProps) {
+export function TutorialCard({id,title, username, date, description, imageUrl}: TutorialCardProps) {
     return <Card className="drop-shadow-xl w-80 m-4">
         <CardMedia
             component={"img"}
@@ -48,7 +49,7 @@ export function TutorialCard({title, username, date, description, imageUrl}: Tut
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small">Start Learning</Button>
+            <Button size="small" href={`/tutorials/${id}`}>Start Learning</Button>
         </CardActions>
     </Card>;
 }

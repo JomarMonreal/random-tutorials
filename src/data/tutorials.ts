@@ -1,5 +1,6 @@
 export const tutorials = [
     {
+        id: "1",
         title: "How to Open a Door?",
         username: "DummyUser",
         date: "2024-06-22T12:24:34.544Z",
@@ -8,6 +9,7 @@ export const tutorials = [
 
     },
     {
+        id: "2",
         title: "How to Backflip?",
         username: "DummyUser",
         date: "2024-06-22T12:24:34.544Z",
@@ -15,6 +17,7 @@ export const tutorials = [
         coverImageUrl: "https://images.squarespace-cdn.com/content/v1/5eaa851bc7b0ae39a020ea32/2d9a8b2c-e0ba-4143-bbfa-255dd67d4353/Backflip+Tutorial+%281%29.jpg?format=2500w",
     },
     {
+        id: "3",
         title: "Introduction to C# | Step-by-Step | Comprehensive Tutorial",
         username: "DummyUser2",
         date: "2024-06-22T12:24:34.544Z",
