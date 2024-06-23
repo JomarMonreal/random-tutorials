@@ -2,7 +2,7 @@
 
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme({
+export const defaultTheme = createTheme({
     palette:{
         primary: {
             main: "#0f0f52"
@@ -20,6 +20,20 @@ export const theme = createTheme({
                 root: {
                     backgroundColor: "white",
                 }
+            }
+        },
+        MuiPaper:{
+            defaultProps:{
+                elevation: 12
+            },
+            styleOverrides:{
+                root:{
+                    padding: "2rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: "2rem"
+                },
             }
         }
     }

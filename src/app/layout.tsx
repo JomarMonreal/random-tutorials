@@ -8,7 +8,7 @@ import { Popup } from "../components/Popup";
 import { MainBackground } from "../components/MainBackground";
 import PopupProvider from "@/providers/PopupProvider";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "@/themes/themes";
+import { defaultTheme } from "@/themes/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={defaultTheme}>
         <body className="bg-white">
           <PopupProvider>
             <Popup/>
