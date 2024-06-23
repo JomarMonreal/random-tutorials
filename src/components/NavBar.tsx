@@ -42,7 +42,7 @@ export function NavBar() {
   )
 
   function NavBarCredentialButtons() {
-    return <menu className="flex justify-evenly w-1/5">
+    return <menu className="flex justify-evenly w-52">
       <Button
         className="text-white font-rubik"
         onClick={() => openPopup(<Signup />)}
@@ -69,6 +69,7 @@ export function NavBar() {
           backgroundColor: isLoading? "primary": "white"
         }
       }}
+      className="hidden sm:flex"
     >
       {navLinks.map((link, index) => {
         if (!link.visibleInNavBar) {

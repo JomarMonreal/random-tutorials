@@ -21,7 +21,7 @@
 
 @layer components{
   .nav-bar{
-    @apply bg-primary-100 flex justify-between items-center text-white w-screen
+    @apply bg-primary-100 flex justify-between items-center text-white w-full overflow-auto
   }
 
   .nav-buttons{
