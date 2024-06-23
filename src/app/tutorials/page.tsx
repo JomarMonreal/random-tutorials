@@ -1,6 +1,8 @@
 import { TutorialCard } from "../../components/TutorialCard"
 import { tutorials } from "@/data/tutorials"
 import { TutorialsTabs } from "../../components/TutorialsTabs"
+import { tags } from "@/data/tags"
+import { users } from "@/data/users"
 
 const Tutorials = () => {
     return (
@@ -14,10 +16,11 @@ const Tutorials = () => {
                             key={index}
                             id={tutorial.id}
                             title={tutorial.title} 
-                            username={tutorial.username} 
+                            username={users.find(user => user.id === tutorial.userID)?.username!} 
                             date={new Date(tutorial.date)} 
                             description={tutorial.description} 
                             imageUrl={tutorial.coverImageUrl}
+                            tags={tutorial.tagIDs.map(tagID => tags.find(tag=>tag.id === tagID)?.label!)}
                         />
                     )
                 }
