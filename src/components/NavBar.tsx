@@ -61,7 +61,7 @@ export function NavBar() {
 
   function NavBarTabs() {
     return <Tabs
-      value={currentTabIndex}
+      value={currentTabIndex == -1? 0: currentTabIndex}
       onChange={handleChange}
       variant="scrollable"
       TabIndicatorProps={{
@@ -72,12 +72,11 @@ export function NavBar() {
       className="hidden sm:flex"
     >
       {navLinks.map((link, index) => {
-        if (!link.visibleInNavBar) {
-          return null;
+        if (link.visibleInNavBar) {
+          return <Tab key={index} href={link.path} label={link.label} id={`simple-tab-${index}`} sx={{
+            color: "white !important"
+          }} />;
         }
-        return <Tab key={index} href={link.path} label={link.label} id={`simple-tab-${index}`} sx={{
-          color: "white !important"
-        }} />;
       }
       )}
     </Tabs>;
