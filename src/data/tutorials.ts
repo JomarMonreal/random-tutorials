@@ -13,7 +13,8 @@ export const tutorials = [
         ],
         sections: [
             {
-                header: "Step 1: Find Your Door",
+                index: 0,
+                heading: "Step 1: Find Your Door",
                 contents: [
                     { 
                         type: "image", 
@@ -58,7 +59,8 @@ export const tutorials = [
         ],
         sections: [
             {
-                header: "Step 1",
+                index: 1,
+                heading: "Step 1",
                 contents: [
                     { 
                         type: "image", 
@@ -110,7 +112,8 @@ export const tutorials = [
         ],
         sections: [
             {
-                header: "Step 1",
+                index: 2,
+                heading: "Step 1",
                 contents: [
                     { 
                         type: "image", 
