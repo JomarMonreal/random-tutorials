@@ -10,8 +10,6 @@ import PopupProvider from "@/providers/PopupProvider";
 import { ThemeProvider } from "@mui/material";
 import { defaultTheme } from "@/themes/themes";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: WEBSITE_NAME,
   description: WEBSITE_DESCRIPTION,
@@ -25,15 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider theme={defaultTheme}>
-        <body className="bg-white">
-          <PopupProvider>
-            <Popup/>
-            <NavBar/>
-            <MainBackground/>
-            {children}
-            <Footer/>
-          </PopupProvider>
-        </body>
+        <PopupProvider>
+          <body className="bg-white">
+              <Popup/>
+              <NavBar/>
+              <MainBackground/>
+              {children}
+              <Footer/>
+          </body>
+        </PopupProvider>
       </ThemeProvider>
     </html>
   );
