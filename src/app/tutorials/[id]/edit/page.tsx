@@ -1,45 +1,67 @@
 "use client"
 
-import { SectionType } from "@/types/SectionType";
 import Section from '@/components/cms/Section';
 import { tutorials } from '@/data/tutorials';
 import { Paper } from '@mui/material';
-import { useState } from 'react'
+import { ChangeEvent, useReducer, useState } from 'react'
 import { TutorialHeader } from "@/components/cms/TutorialHeader";
-import { addSection } from "@/components/cms/actions/addSection";
 import { AddComponentButton } from "@/components/cms/AddComponentButton";
+import { TutorialActionKind, tutorialReducer } from "@/reducers/tutorialReducer";
 
 const TutorialInfoEdit = ({params}:{params: {id:string}}) => {
     
     const tutorial = tutorials.find(tutorial=>tutorial.id === params.id)
-    const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
-    const [description, setDescription] = useState(tutorial?.description!)
-    const [sections, setSections] = useState<SectionType[]>([])
 
-    
+    const [tutorialState, dispatch] = useReducer(tutorialReducer,{
+        currentSectionIndex:- 1,
+        sections: tutorial?.sections ?? [],
+        description: tutorial?.description ?? "",
+        title: tutorial?.title ?? ""
+    })
+
     return (
         <main className='p-8 flex flex-col md:flex-row cursor-auto gap-8'>
             <Paper component={"aside"} className='w-full md:w-72 bg-primary-100 text-white p-4'>
                 <h4>Components</h4>
-                <AddComponentButton label="Add Section" onClick={()=>addSection("Heading",sections,setSections,setCurrentSectionIndex)}/>
+                <AddComponentButton 
+                    label="Add Section" 
+                    onClick={()=>
+                        dispatch({
+                            type: TutorialActionKind.ADD_SECTION,
+                            payload: {}
+                        }) 
+                    }/>
             </Paper>
             
             <article className='flex-1 flex flex-col gap-8'>
 
-                <TutorialHeader tutorial={tutorial!} isEditable={true} description={description} setDescription={setDescription}/>
-
+                <TutorialHeader 
+                    tutorial={tutorial!} 
+                    isEditable={true} 
+                    description={tutorialState.description} 
+                    setDescription={(e)=>dispatch({type: TutorialActionKind.EDIT_DESCRIPTION, payload: e.target.value})}
+                    title={tutorialState.title}
+                    setTitle={(e)=>dispatch({type: TutorialActionKind.EDIT_TITLE, payload: e.target.value})}
+                    isSelected={tutorialState.currentSectionIndex === -1}
+                    onActive={()=>dispatch({type:TutorialActionKind.CHANGE_CURRENT_SECTION, payload: -1})}
+                    />
+                    
                 {
-                    sections.map((section,index) => 
+                    tutorialState.sections.map((section,index) => 
                         <Section 
                             key={index} 
                             isEditable={true}
-                            isSelected={currentSectionIndex === section.index}
-                            index={section.index}
+                            isSelected={tutorialState.currentSectionIndex === index}
                             heading={section.heading} 
-                            setHeading={section.setHeading}
+                            setHeading={(e: ChangeEvent<HTMLInputElement>) => {
+                                dispatch({
+                                    type: TutorialActionKind.EDIT_SECTION_HEADING,
+                                    payload: e.target.value
+                                });
+                            }}
                             contents={section.contents}
-                            onClick={()=>setCurrentSectionIndex(section.index)}
-                            />)
+                            onActive={()=>dispatch({type:TutorialActionKind.CHANGE_CURRENT_SECTION, payload: index})}
+                        />)
                 }
 
             </article>
@@ -50,5 +72,6 @@ const TutorialInfoEdit = ({params}:{params: {id:string}}) => {
 }
 
 export default TutorialInfoEdit
+
 
 
