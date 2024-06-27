@@ -5,10 +5,19 @@ import Content from "./Content"
 import Editable from "../Editable";
 import { SectionType } from "../../types/SectionType";
 
-const Section = ({heading, contents, isEditable=false, isSelected=false, setHeading=(e)=>{},onClick}:SectionType) => {
+const Section = ({heading, contents, isEditable=false, isSelected=false, setHeading=(e)=>{}, onActive}:SectionType) => {
   return (
-    <Paper component={"section"} className={isSelected? ` border-2 border-primary-100`: ``} onClick={onClick}>
-      <Editable isEditable={isEditable} editableComponent={<TextField value={heading} onChange={setHeading} label="Heading" variant="standard" />}>
+    <Paper component={"section"} className={isSelected? ` border-2 border-primary-100`: ``} onClick={onActive}>
+      <Editable 
+        isEditable={isEditable} 
+        editableComponent={
+          <TextField 
+            value={heading} 
+            onChange={setHeading} 
+            onFocus={onActive}
+            label="Heading" 
+            variant="standard" />
+        }>
         <h2 className='text-4xl'>{heading}</h2>
       </Editable>
       {contents.map((content,index)=><Content key={index} type={content.type} data={content.data}/>)}
