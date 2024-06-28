@@ -1,27 +1,34 @@
+"use client"
+
 import { TextField } from "@mui/material";
 import Editable from "../../Editable";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useContext } from "react";
+import { TutorialStateContext, TutorialStateContextType } from "@/providers/TutorialStateProvider";
+import { TutorialActionKind } from "@/reducers/tutorialReducer";
 
 type IndentedParagraph = { 
   text: string, 
-  setParagraph: (e: ChangeEvent<HTMLInputElement>)=>void,
-  isEditable?: boolean, 
   onActive?: ()=>void,
 }
 
-export function IndentedParagraph({ text, setParagraph, isEditable=false, onActive=()=>{} }: IndentedParagraph) {
+export function IndentedParagraph({ text, onActive=()=>{} }: IndentedParagraph) {
+  
+  const {isEditable, dispatch} = useContext(TutorialStateContext) as TutorialStateContextType
+
   return (
     <Editable 
       isEditable={isEditable} 
       editableComponent={
         <TextField 
           id="standard-basic" 
-          label="Standard" 
+          label="Paragraph" 
           variant="standard" 
           multiline 
           className='w-full' 
           value={text}
-          onChange={setParagraph}
+          onChange={(e: ChangeEvent<HTMLInputElement>)=>{
+            dispatch({type: TutorialActionKind.EDIT_PARAGRAPH, payload: e.target.value})
+          }}
           onFocus={onActive}
           />
       }>
