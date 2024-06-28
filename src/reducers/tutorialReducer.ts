@@ -1,100 +1,69 @@
 import { SectionType } from "@/types/SectionType";
+import { editTitle } from "./actions/editTitle";
+import { editDescription } from "./actions/editDescription";
+import { changeCurrentSection } from "./actions/changeCurrentSection";
+import { addSection } from "./actions/addSection";
+import { editSectionHeading } from "./actions/editSectionHeading";
+import { addParagraph } from "./actions/addParagraph";
+import { changeCurrentContent } from "./actions/changeCurrentContent";
+import { editParagraph } from "./actions/editParagraph";
 
 export enum TutorialActionKind {
     EDIT_TITLE = "EDIT_TITLE",
     EDIT_DESCRIPTION = "EDIT_DESCRIPTION",
-    CHANGE_CURRENT_SECTION = "CHANGE_CURRENT_SECTION",
+
+    CHANGE_CURRENT_SECTION_INDEX = "CHANGE_CURRENT_SECTION_INDEX",
+    CHANGE_CURRENT_CONTENT_INDEX = "CHANGE_CURRENT_CONTENT_INDEX",
 
     ADD_SECTION = "ADD_SECTION",
     EDIT_SECTION_HEADING = "EDIT_SECTION_HEADING",
+
+    ADD_PARAGRAPH = "ADD_PARAGRAPH",
+    EDIT_PARAGRAPH = "EDIT_PARAGRAPH",
 }
 
-// An interface for our actions
 export interface TutorialAction {
     type: TutorialActionKind;
     payload: any;
 }
 
-// An interface for our state
 export interface TutorialState {
+    isEditable: boolean,
     currentSectionIndex: number,
+    currentContentIndex: number,
     sections: SectionType[];
-    description: string;
     title: string;
+    description: string;
+
+    tagIds: string[],
+    authorId: string,
+    date: string,
 }
 
-export const tutorialReducer = (state: TutorialState, action: TutorialAction) => {
-    const { type, payload } = action
-    let newState = state
+export const tutorialReducer = (state: TutorialState, action: TutorialAction): TutorialState => {
+    const { type, payload } = action;
 
-    switch(type){
-        // payload string
+    switch (type) {
         case TutorialActionKind.EDIT_TITLE:
-            newState = {
-                ...state,
-                title: payload as string
-            }
-            return newState
-
-        // payload string
+            return editTitle(state, payload as string);
         case TutorialActionKind.EDIT_DESCRIPTION:
-            newState = {
-                ...state,
-                description: payload as string
-            }
-            return newState
-        
-        // payload number
-        case TutorialActionKind.CHANGE_CURRENT_SECTION:
-            newState = {
-                ...state,
-                currentSectionIndex: payload as number
-            }
-            return newState
-
-        // payload SectionType
+            return editDescription(state, payload as string);
+        case TutorialActionKind.CHANGE_CURRENT_SECTION_INDEX:
+            return changeCurrentSection(state, payload as number);
+        case TutorialActionKind.CHANGE_CURRENT_CONTENT_INDEX:
+            return changeCurrentContent(state, payload as number);
         case TutorialActionKind.ADD_SECTION:
-            const section: SectionType = {
-                heading: "Heading",
-                contents: []
-            }
-            
-            const index = state.currentSectionIndex + 1
-            const startPartition = index < 0?
-                [] : [...state.sections.slice(0, index)]
-            const endPartition = index >= state.sections.length ? 
-                [] : [...state.sections.slice(index, state.sections.length)]
-
-            newState = {
-                ...state,
-                sections: [
-                    ...startPartition,
-                    section,
-                    ...endPartition
-                ],
-                currentSectionIndex: index
-            }
-
-            return newState
-        
-        // payload string
+            return addSection(state);
         case TutorialActionKind.EDIT_SECTION_HEADING:
-            const newSections = [... state.sections]
-            console.log(state.currentSectionIndex)
-            newSections[state.currentSectionIndex] = {
-                ...newSections[state.currentSectionIndex], 
-                heading: payload as string
-            }
-
-            newState = {
-                ...state,
-                sections: newSections,
-            }
-
-            return newState
-
+            return editSectionHeading(state, payload as string);
+        case TutorialActionKind.ADD_PARAGRAPH:
+            return addParagraph(state);
+        case TutorialActionKind.EDIT_PARAGRAPH:
+            return editParagraph(state, payload as string);
         default:
-            return newState
+            return state;
     }
-}
+};
+
+
 
