@@ -3,21 +3,15 @@
 import Section from '@/components/cms/Section';
 import { tutorials } from '@/data/tutorials';
 import { Paper } from '@mui/material';
-import { ChangeEvent, useReducer, useState } from 'react'
+import { ChangeEvent, useContext, useReducer, useState } from 'react'
 import { TutorialHeader } from "@/components/cms/TutorialHeader";
 import { AddComponentButton } from "@/components/cms/AddComponentButton";
-import { TutorialActionKind, tutorialReducer } from "@/reducers/tutorialReducer";
+import { TutorialActionKind, TutorialState, tutorialReducer } from "@/reducers/tutorialReducer";
+import { TutorialStateContext, TutorialStateContextType } from '@/providers/TutorialStateProvider';
 
 const TutorialInfoEdit = ({params}:{params: {id:string}}) => {
-    
-    const tutorial = tutorials.find(tutorial=>tutorial.id === params.id)
 
-    const [tutorialState, dispatch] = useReducer(tutorialReducer,{
-        currentSectionIndex:- 1,
-        sections: tutorial?.sections ?? [],
-        description: tutorial?.description ?? "",
-        title: tutorial?.title ?? ""
-    })
+    const {state, dispatch} = useContext(TutorialStateContext) as TutorialStateContextType
 
     return (
         <main className='p-8 flex flex-col md:flex-row cursor-auto gap-8'>
@@ -25,42 +19,24 @@ const TutorialInfoEdit = ({params}:{params: {id:string}}) => {
                 <h4>Components</h4>
                 <AddComponentButton 
                     label="Add Section" 
-                    onClick={()=>
-                        dispatch({
-                            type: TutorialActionKind.ADD_SECTION,
-                            payload: {}
-                        }) 
-                    }/>
+                    onClick={()=>dispatch({type: TutorialActionKind.ADD_SECTION,payload: {}}) }/>
+                <AddComponentButton 
+                    label="Add Paragraph" 
+                    onClick={()=>dispatch({type: TutorialActionKind.ADD_PARAGRAPH,payload: {}}) }/>
             </Paper>
             
             <article className='flex-1 flex flex-col gap-8'>
 
-                <TutorialHeader 
-                    tutorial={tutorial!} 
-                    isEditable={true} 
-                    description={tutorialState.description} 
-                    setDescription={(e)=>dispatch({type: TutorialActionKind.EDIT_DESCRIPTION, payload: e.target.value})}
-                    title={tutorialState.title}
-                    setTitle={(e)=>dispatch({type: TutorialActionKind.EDIT_TITLE, payload: e.target.value})}
-                    isSelected={tutorialState.currentSectionIndex === -1}
-                    onActive={()=>dispatch({type:TutorialActionKind.CHANGE_CURRENT_SECTION, payload: -1})}
-                    />
+                <TutorialHeader/>
                     
                 {
-                    tutorialState.sections.map((section,index) => 
+                    state.sections.map((section,index) => 
                         <Section 
                             key={index} 
-                            isEditable={true}
-                            isSelected={tutorialState.currentSectionIndex === index}
                             heading={section.heading} 
-                            setHeading={(e: ChangeEvent<HTMLInputElement>) => {
-                                dispatch({
-                                    type: TutorialActionKind.EDIT_SECTION_HEADING,
-                                    payload: e.target.value
-                                });
-                            }}
                             contents={section.contents}
-                            onActive={()=>dispatch({type:TutorialActionKind.CHANGE_CURRENT_SECTION, payload: index})}
+                            isSelected={state.currentSectionIndex === index}
+                            onActive={()=>dispatch({type:TutorialActionKind.CHANGE_CURRENT_SECTION_INDEX, payload: index})}
                         />)
                 }
 
