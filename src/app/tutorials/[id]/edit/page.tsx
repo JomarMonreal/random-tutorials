@@ -1,11 +1,11 @@
 "use client"
 
-import Section from '@/components/cms/Section';
+import Section from '@/components/tutorial-management/Section';
 import { tutorials } from '@/data/tutorials';
 import { Paper } from '@mui/material';
 import { ChangeEvent, useContext, useReducer, useState } from 'react'
-import { TutorialHeader } from "@/components/cms/TutorialHeader";
-import { AddComponentButton } from "@/components/cms/AddComponentButton";
+import { TutorialHeader } from "@/components/tutorial-management/TutorialHeader";
+import { AddComponentButton } from "@/components/tutorial-management/AddComponentButton";
 import { TutorialActionKind, TutorialState, tutorialReducer } from "@/reducers/tutorialReducer";
 import { TutorialStateContext, TutorialStateContextType } from '@/providers/TutorialStateProvider';
 

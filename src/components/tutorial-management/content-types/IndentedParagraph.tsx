@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import Editable from "../Editable";
+import Editable from "../../Editable";
 import { ChangeEvent } from "react";
 
 type IndentedParagraph = { 

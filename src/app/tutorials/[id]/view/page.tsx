@@ -1,5 +1,5 @@
 import { Tags } from '@/components/Tags';
-import Section from '@/components/cms/Section';
+import Section from '@/components/tutorial-management/Section';
 import { tags } from '@/data/tags';
 import { tutorials } from '@/data/tutorials';
 import { users } from '@/data/users';
