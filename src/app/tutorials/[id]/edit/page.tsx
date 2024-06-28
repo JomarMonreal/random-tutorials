@@ -1,15 +1,14 @@
 "use client"
 
 import Section from '@/components/tutorial-management/Section';
-import { tutorials } from '@/data/tutorials';
 import { Paper } from '@mui/material';
-import { ChangeEvent, useContext, useReducer, useState } from 'react'
+import { useContext } from 'react'
 import { TutorialHeader } from "@/components/tutorial-management/TutorialHeader";
 import { AddComponentButton } from "@/components/tutorial-management/AddComponentButton";
-import { TutorialActionKind, TutorialState, tutorialReducer } from "@/reducers/tutorialReducer";
+import { TutorialActionKind } from "@/reducers/tutorialReducer";
 import { TutorialStateContext, TutorialStateContextType } from '@/providers/TutorialStateProvider';
 
-const TutorialInfoEdit = ({params}:{params: {id:string}}) => {
+const TutorialInfoEdit = () => {
 
     const {state, dispatch} = useContext(TutorialStateContext) as TutorialStateContextType
 
