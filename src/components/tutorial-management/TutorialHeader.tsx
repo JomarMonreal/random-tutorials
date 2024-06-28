@@ -13,7 +13,6 @@ export function TutorialHeader() {
 
     const {state, dispatch} = useContext(TutorialStateContext) as TutorialStateContextType
     
-
     return (
     <Paper 
         component={"section"} 
@@ -43,7 +42,7 @@ export function TutorialHeader() {
             isEditable={state.isEditable} editableComponent={
                 <TextField 
                     id="standard-basic" 
-                    label="Standard" 
+                    label="Description" 
                     variant="standard" 
                     multiline 
                     className='w-full' 
