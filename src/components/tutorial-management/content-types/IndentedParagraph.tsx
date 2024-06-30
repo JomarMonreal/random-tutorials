@@ -27,12 +27,15 @@ export function IndentedParagraph({ text, onActive=()=>{} }: IndentedParagraph) 
           className='w-full' 
           value={text}
           onChange={(e: ChangeEvent<HTMLInputElement>)=>{
-            dispatch({type: TutorialActionKind.EDIT_PARAGRAPH, payload: e.target.value})
+            dispatch({
+              type: TutorialActionKind.EDIT_CONTENT, 
+              payload: {type: "paragraph", data: { text: e.target.value } }
+            })
           }}
           onFocus={onActive}
           />
       }>
-      <p className=' indent-4 text-justify'>{text}</p>
+      <p className=' indent-4 text-justify wrap'>{text}</p>
     </Editable>
   )
 }
