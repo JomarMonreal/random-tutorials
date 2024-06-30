@@ -7,6 +7,9 @@ import { editSectionHeading } from "./actions/editSectionHeading";
 import { addParagraph } from "./actions/addParagraph";
 import { changeCurrentContent } from "./actions/changeCurrentContent";
 import { editParagraph } from "./actions/editParagraph";
+import { addContent } from "./actions/addContent";
+import { ContentType } from "@/types/ContentType";
+import { editContent } from "./actions/editContent";
 
 export enum TutorialActionKind {
     EDIT_TITLE = "EDIT_TITLE",
@@ -18,13 +21,13 @@ export enum TutorialActionKind {
     ADD_SECTION = "ADD_SECTION",
     EDIT_SECTION_HEADING = "EDIT_SECTION_HEADING",
 
-    ADD_PARAGRAPH = "ADD_PARAGRAPH",
-    EDIT_PARAGRAPH = "EDIT_PARAGRAPH",
+    ADD_CONTENT = "ADD_CONTENT",
+    EDIT_CONTENT = "EDIT_CONTENT"
 }
 
 export interface TutorialAction {
     type: TutorialActionKind;
-    payload: any;
+    payload?: string | number | ContentType;
 }
 
 export interface TutorialState {
@@ -56,10 +59,10 @@ export const tutorialReducer = (state: TutorialState, action: TutorialAction): T
             return addSection(state);
         case TutorialActionKind.EDIT_SECTION_HEADING:
             return editSectionHeading(state, payload as string);
-        case TutorialActionKind.ADD_PARAGRAPH:
-            return addParagraph(state);
-        case TutorialActionKind.EDIT_PARAGRAPH:
-            return editParagraph(state, payload as string);
+        case TutorialActionKind.ADD_CONTENT:
+            return addContent(state, payload as ContentType);
+        case TutorialActionKind.EDIT_CONTENT:
+            return editContent(state, payload as ContentType);
         default:
             return state;
     }
