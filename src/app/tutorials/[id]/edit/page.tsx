@@ -18,10 +18,23 @@ const TutorialInfoEdit = () => {
                 <h4>Components</h4>
                 <AddComponentButton 
                     label="Add Section" 
-                    onClick={()=>dispatch({type: TutorialActionKind.ADD_SECTION,payload: {}}) }/>
+                    onClick={()=>dispatch({type: TutorialActionKind.ADD_SECTION}) }/>
                 <AddComponentButton 
                     label="Add Paragraph" 
-                    onClick={()=>dispatch({type: TutorialActionKind.ADD_PARAGRAPH,payload: {}}) }/>
+                    onClick={()=>
+                        dispatch({
+                            type: TutorialActionKind.ADD_CONTENT,
+                            payload: {type: "paragraph", data: {text: "Write paragraph here..."}}
+                        })
+                    }/>
+                <AddComponentButton 
+                    label="Add Image" 
+                    onClick={()=>
+                        dispatch({
+                            type: TutorialActionKind.ADD_CONTENT,
+                            payload: {type: "image", data: {url: "", caption: "Figure X. Write caption here"}}
+                        })
+                    }/>
             </Paper>
             
             <article className='flex-1 flex flex-col gap-8'>
