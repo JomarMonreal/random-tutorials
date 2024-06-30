@@ -13,7 +13,7 @@ const Content = ({content, onActive}: {content: ContentType, onActive: ()=>void}
   }
 
   if(content.type === "image"){
-    return <ImageFigure url={content.data.url!} caption={content.data.caption!}/>
+    return <ImageFigure url={content.data.url!} caption={content.data.caption!} onActive={onActive}/>
   }
 
   if(content.type === "bulleted-list"){
